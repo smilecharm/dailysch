@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @dailysch.date %>
+</p>
+
+<p>
+  <strong>Counsellor:</strong>
+  <%= @dailysch.counsellor %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @dailysch.time %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @dailysch.client %>
+</p>
+
+<p>
+  <strong>Ref:</strong>
+  <%= @dailysch.ref %>
+</p>
+
+<%= link_to 'Edit', edit_dailysch_path(@dailysch) %> |
+<%= link_to 'Back', dailysches_path %>
