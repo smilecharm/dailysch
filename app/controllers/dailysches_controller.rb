@@ -3,6 +3,8 @@ class DailyschesController < ApplicationController
 
   # GET /dailysches or /dailysches.json
   def index
+    @all_counsellor_names = Dailysch.all.pluck(:counsellor).uniq
+
     @dailysches = Dailysch.all.order('time asc').group_by(&:time)
   end
 
@@ -57,13 +59,14 @@ class DailyschesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dailysch
-      @dailysch = Dailysch.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def dailysch_params
-      params.require(:dailysch).permit(:date, :counsellor, :time, :client, :ref)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dailysch
+    @dailysch = Dailysch.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def dailysch_params
+    params.require(:dailysch).permit(:date, :counsellor, :time, :client, :ref)
+  end
 end
