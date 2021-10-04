@@ -1,9 +1,6 @@
 <style>
-    .main-table {
-        height: 1200px;
-    }
-
     .grid_wrap {
+        height: 1200px;
         display: grid;
         grid-template-columns: <%= @generated_columns %>;
         grid-template-rows: <%= @generated_rows %>;
@@ -17,29 +14,58 @@
     <!--    선생님들 -->
     <% @counsellors.map do |item| %>
       <div
-        class="bg-green-200 text-center"
+        class="bg-green-200 flex items-center justify-center"
         style="grid-row: time-times; grid-column: <%= item %>;">
-        <%= item %></div>
+        <%= item %>
+      </div>
     <% end %>
 
     <!--    시간-->
-    <div class="bg-yellow-500"
+    <div class="bg-yellow-400"
          style="grid-row: time-0900 / time-1000; grid-column: times;">
       9:00
     </div>
-    <div class="bg-yellow-500"
+    <div class="bg-yellow-400"
          style="grid-row: time-1000 / time-1100; grid-column: times;">
       10:00
     </div>
+    <div class="bg-yellow-400"
+         style="grid-row: time-1100 / time-1200; grid-column: times;">
+      11:00
+    </div>
+    <div class="bg-yellow-400"
+         style="grid-row: time-1200 / time-1300; grid-column: times;">
+      12:00
+    </div>
+    <div class="bg-yellow-400"
+         style="grid-row: time-1300 / time-1400; grid-column: times;">
+      13:00
+    </div>
+    <div class="bg-yellow-400"
+         style="grid-row: time-1400 / time-1500; grid-column: times;">
+      14:00
+    </div>
+    <div class="bg-yellow-400"
+         style="grid-row: time-1500 / time-1600; grid-column: times;">
+      15:00
+    </div>
+    <div class="bg-yellow-400"
+         style="grid-row: time-1600 / time-1700; grid-column: times;">
+      16:00
+    </div>
+    <div class="bg-yellow-400"
+         style="grid-row: time-1700 / time-1800; grid-column: times;">
+      17:00
+    </div>
 
     <!--    데이터-->
-    <div class="bg-yellow-200"
-         style="grid-row: time-0930 / time-1200; grid-column: 박놀이;">
-      1
-    </div>
-    <div class="bg-yellow-200"
-         style="grid-row: time-1230 / time-1300; grid-column: 김선미;">
-      1
-    </div>
+    <% @dailysches.map do |item| %>
+      <div class="bg-yellow-200"
+           style="grid-row: time-<%= item.time.strftime('%H%M') %> / time-<%= (item.time + 30.minutes).strftime('%H%M') %>;
+             grid-column: <%= item.counsellor %>;">
+        <%= item.client %>
+      </div>
+    <% end %>
+
   </div>
 </div>
