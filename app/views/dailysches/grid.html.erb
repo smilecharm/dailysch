@@ -1,0 +1,45 @@
+<style>
+    .main-table {
+        height: 1200px;
+    }
+
+    .grid_wrap {
+        display: grid;
+        grid-template-columns: <%= @generated_columns %>;
+        grid-template-rows: <%= @generated_rows %>;
+        grid-gap: 3px;
+        border: 1px solid black;
+    }
+</style>
+<div>
+  <div class=" grid_wrap h-full w-full bg-yellow-100">
+
+    <!--    선생님들 -->
+    <% @counsellors.map do |item| %>
+      <div
+        class="bg-green-200 text-center"
+        style="grid-row: time-times; grid-column: <%= item %>;">
+        <%= item %></div>
+    <% end %>
+
+    <!--    시간-->
+    <div class="bg-yellow-500"
+         style="grid-row: time-0900 / time-1000; grid-column: times;">
+      9:00
+    </div>
+    <div class="bg-yellow-500"
+         style="grid-row: time-1000 / time-1100; grid-column: times;">
+      10:00
+    </div>
+
+    <!--    데이터-->
+    <div class="bg-yellow-200"
+         style="grid-row: time-0930 / time-1200; grid-column: 박놀이;">
+      1
+    </div>
+    <div class="bg-yellow-200"
+         style="grid-row: time-1230 / time-1300; grid-column: 김선미;">
+      1
+    </div>
+  </div>
+</div>
