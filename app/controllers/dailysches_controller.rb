@@ -5,7 +5,28 @@ class DailyschesController < ApplicationController
   def index
     @all_counsellor_names = Dailysch.all.pluck(:counsellor).uniq
 
-    @dailysches = Dailysch.all.order('time asc').group_by(&:time)
+    @dailysches = Dailysch.all.order('time asc')
+  end
+
+  def grid
+    @dailysches = Dailysch.all.order('time asc')
+
+    @counsellors = Dailysch.all.pluck(:counsellor).uniq
+    @generated_columns = '[times] 3rem' + @counsellors.map { |item| "[#{item}] 1fr" }.join(' ')
+
+    # ex 9시부터 6시까지 근무 30분 간격
+    @day_times = ['times',
+                  '0900', '0930', '1000', '1030', '1100', '1130',
+                  '1200', '1230', '1300', '1330', '1400', '1430',
+                  '1500', '1530', '1600', '1630', '1700', '1730',
+                  '1800'
+    ]
+
+    # 시간 css 생성
+    @generated_rows = @day_times.map do |item|
+      "[time-#{item}] 1fr"
+    end.join(' ')
+
   end
 
   # GET /dailysches/1 or /dailysches/1.json

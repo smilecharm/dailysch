@@ -1,25 +1,21 @@
 <style>
     .schedule {
         display: grid;
-        grid-template-rows:
-          [time-0800] 1fr
-          [time-0830] 1fr
-          [time-0900] 1fr
-          [time-0930] 1fr
-          [time-1000] 1fr;
+        grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
         grid-template-columns: repeat(<%= @all_counsellor_names.length %>, [track] 1fr);
-        grid-gap: 5px;
+        grid-gap: 3px;
+        height: 800px;
+        border: 1px solid black;
+
     }
 
     .session-1 {
-        height: 200px;
         grid-row: time-0830 / time-0930;
         grid-column: track 3;
     }
 
     .session-2 {
-        height: 200px;
-        grid-row: time-0900 / time-0930;
+        grid-row: time-0900 / time-1000;
         grid-column: track 2;
     }
 </style>
